@@ -18,7 +18,6 @@ docker exec -it db bash
 mysql -uroot -proot
 use nodedb;
 create table people(id int not null auto_increment, name varchar(255), primary key(id));
-rd
 ```
 
 ## Build ONE

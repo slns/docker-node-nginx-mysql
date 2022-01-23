@@ -1,5 +1,3 @@
 use nodedb;
 
-CREATE TABLE IF NOT EXISTS people (
-  name VARCHAR(50)
-);
+CREATE TABLE IF NOT EXISTS people(id int not null auto_increment, name varchar(255), primary key(id)));
