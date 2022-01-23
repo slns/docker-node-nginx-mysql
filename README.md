@@ -33,9 +33,3 @@ docker build -t slns/nginx-mysql-node . -f PATH/Dockerfile
 ```docker
 docker run --rm -d -p 3000:3000 -name slns/nginx-mysql-node slns/nginx-mysql-node
 ```
-
-## Run image from DockerHub
-
-```docker
-docker pull slns/nginx-mysql-node
-```
