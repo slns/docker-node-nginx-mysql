@@ -1,0 +1,54 @@
+version: "3.8"
+services:
+    nodeserver:
+        build:
+            context: ./node
+            dockerfile: Dockerfile
+        container_name: nodeserver
+        image: slns/nodeserver
+        ports:
+            - "3000:3000"
+        networks: 
+          - node-network
+        volumes: 
+          - ./node:/usr/src/app
+        tty: true
+        depends_on: 
+             - db
+
+
+    nginx:
+        restart: always
+        container_name: nginx
+        image: slns/nginx
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile
+        ports:
+            - "80:80"
+        networks: 
+             - node-network
+        depends_on: 
+             - db
+
+
+    db:
+        build: 
+           context: ./mysql
+        image: slns/mysql
+        container_name: db
+        restart: always
+        tty: true
+        volumes: 
+          - ./mysql/volume:/var/lib/mysql
+        environment: 
+          - MYSQL_DATABASE=nodedb
+          - MYSQL_ROOT_PASSWORD=root
+        networks: 
+          - node-network
+
+
+
+networks: 
+  node-network:
+    driver: bridge
