@@ -9,8 +9,10 @@ WORKDIR /usr/src/app
 #     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
 #     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
+VOLUME ./node:/usr/src/app
+
 # copy the package.json files from local machine to the workdir in container
-COPY package*.json ./
+COPY package*.json .
 
 RUN npm install
 

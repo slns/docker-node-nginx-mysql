@@ -31,5 +31,10 @@ docker build -t slns/nginx-mysql-node . -f PATH/Dockerfile
 ## Run ONE
 
 ```docker
-docker run --rm -d -p 3000:3000 -name slns/nginx-mysql-node slns/nginx-mysql-node
+docker run --rm -d -p 3000:3000 --name slns/nginx-mysql-node slns/nginx-mysql-node
+```
+
+## Execute Bash in MYSQL Server
+```docker
+docker exec -it <name-Container> bash
 ```
